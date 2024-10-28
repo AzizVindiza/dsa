@@ -1,0 +1,29 @@
+.ProductCard {
+
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+
+    .ProductCard__text {
+        color: #ffffff;
+    }
+
+    width: 30%;
+    .ProductCard__img{
+        width: 100%;
+    }
+
+}
+.ProductCard__active{
+    background-color: #72BBFF;
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    .ProductCard__text {
+        color: #0e1821;
+    }
+}
