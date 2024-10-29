@@ -9,6 +9,7 @@
 
     .ProductCard__text {
         color: #ffffff;
+        text-align: center;
     }
 
     width: 30%;
