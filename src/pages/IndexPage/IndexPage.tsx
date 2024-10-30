@@ -1,26 +1,29 @@
 import { FC, useState } from 'react';
 import ProductCard from "@/components/ProductCard/ProductCard.tsx";
-import burger from './burger-bar.png';
 import ButtonBuy from "@/components/ButtonBuy/ButtonBuy.tsx";
+import useProducts from "@/hooks/useProducts.ts";
 
 export const IndexPage: FC = () => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const { products, error } = useProducts();
 
-    const handleCardClick = (index: number) => {
-        setActiveIndex(index === activeIndex ? null : index);
+    const handleCardClick = (id: number) => {
+        setActiveIndex((prev) => (prev === id ? null : id));
     };
+
+    if (error) {
+        return <div>{error}</div>;
+    }
 
     return (
         <>
             <div style={{ display: "flex", justifyContent: "space-evenly", flexWrap: "wrap" }}>
-                {[...Array(5)].map((_, index) => (
+                {products.map((product) => (
                     <ProductCard
-                        key={index}
-                        title="Burger"
-                        image={burger}
-                        price={9.39}
-                        isActive={activeIndex === index}
-                        onClick={() => handleCardClick(index)}
+                        key={product.id}
+                        product={product}
+                        isActive={activeIndex === product.id}
+                        onClick={() => handleCardClick(product.id)}
                     />
                 ))}
             </div>

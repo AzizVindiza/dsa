@@ -1,15 +1,14 @@
 import { FC } from "react";
 import './ProductCard.css';
+import IProduct from "@/types/IProduct.ts";
 
 export type ProductCardProps = {
-    title: string;
-    image: string;
-    price: number;
+    product: IProduct;
     isActive: boolean;
     onClick: React.MouseEventHandler<HTMLDivElement>;
 };
 
-const ProductCard: FC<ProductCardProps> = ({ title, image, price, isActive, onClick }) => {
+const ProductCard: FC<ProductCardProps> = ({ product,isActive, onClick }) => {
     return (
         <div
             className={`ProductCard ${isActive ? 'ProductCard__active' : ''}`}
@@ -17,11 +16,11 @@ const ProductCard: FC<ProductCardProps> = ({ title, image, price, isActive, onCl
         >
             <img
                 className="ProductCard__img"
-                src={image}
-                alt={title}
+                src={product.image}
+                alt={product.title}
             />
             <p className="ProductCard__text">
-                {title} {'\u00A0'} {price}$
+                {product.title} {'\u00A0'} {product.price}Exp
             </p>
         </div>
     );
